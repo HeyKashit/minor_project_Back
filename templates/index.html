@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>BackOrder</title>
+
+    <!-- Icons font CSS-->
+    <link href="{{ url_for('static', filename='vendor/mdi-font/css/material-design-iconic-font.min.css' ) }}" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='vendor/font-awesome-4.7/css/font-awesome.min.css' ) }}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='vendor/datepicker/daterangepicker.css') }}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{{ url_for('static', filename='css/smain.css') }}" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Please enter the details to predict the back order</h2>
+                    <form method="POST" action="/predict">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">national_inv</label>
+                                    <input class="input--style-4" type="number" name="national_inv" id="national_inv">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">lead_time</label>
+                                    <input class="input--style-4" type="number" name="lead_time" id="lead_time">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">sales_1_month</label>
+                                    <input class="input--style-4" type="number" name="sales_1_month" id="sales_1_month">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">pieces_past_due</label>
+                                    <input class="input--style-4" type="number" name="pieces_past_due" id="pieces_past_due">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">perf_6_month_avg</label>
+                                    <input class="input--style-4" type="number" name="perf_6_month_avg" id="perf_6_month_avg" step=".01">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">local_bo_qty</label>
+                                    <input class="input--style-4" type="number" name="local_bo_qty" id="local_bo_qty">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">deck_risk</label>
+                                    <select name="deck_risk" id="deck_risk">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">oe_constraint</label>
+                                    <select name="oe_constraint" id="oe_constraint">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">ppap_risk</label>
+                                    <select name="ppap_risk" id="ppap_risk">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">stop_auto_buy</label>
+                                    <select name="stop_auto_buy" id="stop_auto_buy">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">rev_stop</label>
+                                    <select name="rev_stop" id="rev_stop">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Predict</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <!-- Vendor JS-->
+    <script src="{{ url_for('static', filename='vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/datepicker/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/datepicker/daterangepicker.js') }}"></script>
+
+    <!-- Main JS-->
+    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
